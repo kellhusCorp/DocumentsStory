@@ -22,6 +22,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql queries", "Sql queries", "{802AE69E-49CC-458E-BE58-9385FD55C90B}"
 	ProjectSection(SolutionItems) = preProject
 		SqlQueries\CreateStructure.sql = SqlQueries\CreateStructure.sql
+		SqlQueries\InsertTestDocuments.sql = SqlQueries\InsertTestDocuments.sql
 	EndProjectSection
 EndProject
 Global
