@@ -13,6 +13,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentsStory.Client", "Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DocumentsStory.Server", "DocumentsStory.Server\DocumentsStory.Server.csproj", "{C368EB64-A1B3-4038-9DC2-C75D5A25AE8B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EFC6A7A5-1432-4258-A53E-D447B5EDF0D1}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sql queries", "Sql queries", "{802AE69E-49CC-458E-BE58-9385FD55C90B}"
+	ProjectSection(SolutionItems) = preProject
+		SqlQueries\CreateStructure.sql = SqlQueries\CreateStructure.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
