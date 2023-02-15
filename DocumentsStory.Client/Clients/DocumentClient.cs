@@ -1,15 +1,22 @@
 ﻿using DocumentsStory.Contracts;
 using DocumentsStory.Domain;
 using System.Collections.Generic;
-using System.Configuration;
 using System.ServiceModel;
 using System.Threading.Tasks;
 
-namespace DocumentsStory.Client.Helpers
+namespace DocumentsStory.Client.Clients
 {
-    public class DocumentsGetter
+    /// <summary>
+    /// Клиент для работы с документами.
+    /// </summary>
+    public class DocumentClient : IDocumentService
     {
-        private readonly string hostAddress = ConfigurationManager.AppSettings["hostAddress"];
+        private readonly string hostAddress;
+
+        public DocumentClient(string hostAddress)
+        {
+            this.hostAddress = hostAddress;
+        }
 
         public async Task<IEnumerable<Document>> GetDocuments()
         {

@@ -57,7 +57,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Helpers\DocumentsGetter.cs" />
+    <Compile Include="Clients\DocumentClient.cs" />
     <Compile Include="Helpers\NotifyTaskCompletion.cs" />
     <Compile Include="ViewModels\DocumentListViewModel.cs" />
     <Page Include="DocumentListWindow.xaml">

@@ -22,12 +22,22 @@ namespace DocumentsStory.Server
             Console.ReadKey();
         }
 
+        /// <summary>
+        /// Возвращает <see cref="Uri"/> на основе узла, указанного в конфиге приложения.
+        /// </summary>
+        /// <returns></returns>
         private static Uri GetServiceUriFromConfig()
         {
             var address = ConfigurationManager.AppSettings["hostAddress"];
             return new Uri(address);
         }
 
+        /// <summary>
+        /// Возвращает строку подключения из конфига текущего приложения.
+        /// <para>Если <b>connectionName</b> не задан, то используется DefaultConnection.</para>
+        /// </summary>
+        /// <param name="connectionName">Название строки подключения.</param>
+        /// <returns></returns>
         private static string GetConnectionStringFromConfig(string connectionName = null)
         {
             return ConfigurationManager.ConnectionStrings[connectionName ?? "DefaultConnection"].ConnectionString;
