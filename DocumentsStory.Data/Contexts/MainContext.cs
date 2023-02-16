@@ -12,7 +12,6 @@ namespace DocumentsStory.Data.Contexts
     {
         public MainContext() : base("Default")
         {
-
         }
 
         public MainContext(string connectionString) : base(connectionString)
