@@ -6,14 +6,14 @@ using System.ServiceModel;
 
 namespace DocumentsStory.Server
 {
-    internal class Program
+    internal static class Program
     {
-        static void Main()
+        private static void Main()
         {
             var uri = GetServiceUriFromConfig();
             var connectionString = GetConnectionStringFromConfig();
             IDocumentService documentService = new DocumentService(connectionString);
-            ServiceHost host = new ServiceHost(documentService, uri);
+            var host = new ServiceHost(documentService, uri);
             var binding = new NetTcpBinding(SecurityMode.None);
             host.AddServiceEndpoint(typeof(IDocumentService), binding, string.Empty);
             host.Opened += HostOpened;

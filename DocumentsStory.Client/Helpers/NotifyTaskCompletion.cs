@@ -15,6 +15,7 @@ namespace DocumentsStory.Client.Helpers
                 var _ = WatchTaskAsync(task);
             }
         }
+
         private async Task WatchTaskAsync(Task task)
         {
             try
@@ -24,6 +25,7 @@ namespace DocumentsStory.Client.Helpers
             catch
             {
             }
+
             var propertyChanged = PropertyChanged;
             if (propertyChanged == null)
                 return;
@@ -31,32 +33,25 @@ namespace DocumentsStory.Client.Helpers
             propertyChanged(this, new PropertyChangedEventArgs("IsCompleted"));
             propertyChanged(this, new PropertyChangedEventArgs("IsNotCompleted"));
             if (task.IsCanceled)
-            {
                 propertyChanged(this, new PropertyChangedEventArgs("IsCanceled"));
-            }
             else if (task.IsFaulted)
             {
                 propertyChanged(this, new PropertyChangedEventArgs("IsFaulted"));
                 propertyChanged(this, new PropertyChangedEventArgs("Exception"));
                 propertyChanged(this,
-                  new PropertyChangedEventArgs("InnerException"));
+                    new PropertyChangedEventArgs("InnerException"));
                 propertyChanged(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
             else
             {
                 propertyChanged(this,
-                  new PropertyChangedEventArgs("IsSuccessfullyCompleted"));
+                    new PropertyChangedEventArgs("IsSuccessfullyCompleted"));
                 propertyChanged(this, new PropertyChangedEventArgs("Result"));
             }
         }
+
         public Task<TResult> Task { get; private set; }
-        public TResult Result
-        {
-            get
-            {
-                return (Task.Status == TaskStatus.RanToCompletion) ? Task.Result : default(TResult);
-            }
-        }
+        public TResult Result => Task.Status == TaskStatus.RanToCompletion ? Task.Result : default;
         public TaskStatus Status => Task.Status;
         public bool IsCompleted => Task.IsCompleted;
         public bool IsNotCompleted => !Task.IsCompleted;

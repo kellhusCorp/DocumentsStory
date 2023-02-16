@@ -14,7 +14,7 @@ namespace DocumentsStory.Client
         /// <summary>
         /// VM.
         /// </summary>
-        public DocumentListViewModel ViewModel;
+        public readonly DocumentListViewModel ViewModel;
 
         public DocumentListWindow()
         {
@@ -31,10 +31,9 @@ namespace DocumentsStory.Client
         /// </summary>
         /// <param name="hostAddress">Адрес сервера.</param>
         /// <returns></returns>
-        private IDocumentService GetDocumentClient(string hostAddress = null)
+        private static IDocumentService GetDocumentClient(string hostAddress = null)
         {
-            var client = new DocumentClient(hostAddress ?? ConfigurationManager.AppSettings["hostAddress"]);
-            return client;
+            return new DocumentClient(hostAddress ?? ConfigurationManager.AppSettings["hostAddress"]);
         }
 
         private void ClearDataGridItems()
