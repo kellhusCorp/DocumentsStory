@@ -51,10 +51,19 @@ namespace DocumentsStory.Domain
 
         // Предположил, что дата апдейта может быть null, так посчитал, ввиду того, что могут существовать новые документы (ещё не обновленные ни разу).
         // Если не так, то выкинуть проверку на null.
+        // Если каким-то образом, LastUpdateAt > DateTime.Now, то документ не актуален.
+        // Ну, а вообще триггер на вставку, либо валидация серверная при создании.
         /// <summary>
         /// Признак актуальности.
         /// </summary>
         [NotMapped]
-        public bool IsActual => LastUpdateAt != null && (DateTime.Now - LastUpdateAt).Value.TotalDays < 60;
+        public bool IsActual
+        {
+            get
+            {
+                var currentDate = DateTime.Now;
+                return LastUpdateAt != null && LastUpdateAt < currentDate && (currentDate - LastUpdateAt).Value.TotalDays < 60;
+            }
+        }
     }
 }
